@@ -1,6 +1,7 @@
 import cv2
 import time
 import os
+from datetime import datetime
 
 x=0
 while x < 3:
@@ -12,7 +13,9 @@ while x < 3:
     path = 'D:/You deserve better/1. TA SEMOGA CERIA, 2021 lulus AAMIIN/1. Fall Detection/Dataset/Falling'
     # Our operations on the frame come here
     x=x+1
-    cv2.imwrite(os.path.join(path, "falling%03i.png" %x), frame)
+    current_time = datetime.now()
+    image_name = current_time.strftime("%d%H%M%S")
+    cv2.imwrite(os.path.join(path, "falling"+image_name+".png"), frame)
     time.sleep(3)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
